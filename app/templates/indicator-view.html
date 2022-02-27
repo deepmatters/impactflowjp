@@ -15,7 +15,7 @@
                 <p><strong>指標バンクのアップデート指示</strong></p>
                 <p>管理者として指標バンクを更新したい場合は、以下の手順で行ってください。</p>
                 <ol>
-                    <li>"1シートのエクセルファイルまたはCSVファイルを用意する。1行目の列（A1,B1などから）をカテゴリーとしてラベル付けする。それぞれ、<code>category</code>, <code>subcategory</code>, <code>indicator</code>, <code>source</code>のようにしてください。
+                    <li>"1シートのエクセルファイルまたはCSVファイルを用意する。1行目の列（A1,B1などから）をカテゴリーとしてラベル付けする。それぞれ、<code>category</code>, <code>Sub-category</code>, <code>indicator</code>, <code>source</code>のようにしてください。
                         すべての列の大文字を使用しないことに注意してください"</li>
                     <li>2行目から、対応する列名に関する指標情報を入力する。</li>
                     <li>ファイルを保存して、chitpong@changefusion.orgに送信してください。データベース内のインジケーターデータを新しいものに置き換えます。</li>
@@ -32,7 +32,7 @@
                 {% for indicator in indicators %}
                     <tr>
                         <td>{{ indicator['category'] }}</td>
-                        <td>{{ indicator['subcategory'] }}</td>
+                        <td>{{ indicator['Sub-category'] }}</td>
                         <td>{{ indicator['indicator'] }}</td>
                         <td>{{ indicator['source'] }}</td>
                     </tr>

@@ -1263,7 +1263,7 @@ def indicator_view():
     if editable:
         # Connect and define the database
         client = pymongo.MongoClient(app.config['DB_URI'])
-        mongodb = client.impactflow
+        mongodb = client.impactflowjp
 
         indicators =  mongodb.indicator.find({})
 
