@@ -1,0 +1,3 @@
+function projectPrint() {
+    window.print()
+}

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< プロジェクトへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div id="formApp">
+        <div id="csrf">{{ form.csrf_token }}</div>
+        <div id="projectId" style="display: none;">{{ project.id }}</div>
+        <div id="stakeholderId" style="display: none;">{{ stakeholder.id }}</div>
+        <div id="activityId" style="display: none;">{{ activity.id }}</div>
+        <div id="outputId" style="display: none;">{{ output.id }}</div>
+        <div id="outcomeId" style="display: none;">{{ outcome.id }}</div>
+        <div id="data" style="display:none">{{ data }}</div>
+        <div id="dataProject" style="display:none">{{ data_project }}</div>
+
+        <h1>アウトカムの編集</h1>
+        
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">アウトカム</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">アウトカム</p>
+                    <textarea id="outcome" type="text" placeholder="アウトカム">{{ outcome['json']['outcome'] }}</textarea><br>                
+                </div>
+                <div class="form-part-right">
+                    <p class="gray-small">例</p>
+                    <p>家計負債の減少</p>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">記載されたアウトプットの結果として期待される中長期的な成果を記述してください。</p>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">指標</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">標準となる指標バンクを検索する</p>
+                    <input type="text" id="searchBox" class="search-box" placeholder="キーワードを入力する" onkeyup="searchSubmit()">
+                    <button type="button" class="search-button" onclick="searchSubmit()" style="display: none;">検索</button>
+                    <br>
+                    
+                    <div id="searchResultNumWrapper" style="display:none">
+                        <button type="button" class="search-clear-button" onclick="searchClear()">明確な結果</button>
+                        <p>結果 <span id="searchResultNum">0</span> エントリー</p>
+                    </div>
+                    <div id="searchResult" class="search-result"></div>
+                    <div class="spacer-big"></div>
+            
+                    <p class="blue-em">--- または、独自の指標を使用する ---</p>
+                    <input id="indicatorCategory" type="text" placeholder="カテゴリー" value="{{ outcome['json']['indicatorCategory'] }}" style="display: none;">
+                    <textarea id="indicator" type="text" placeholder="指標">{{ outcome['json']['indicator'] }}</textarea><br>
+                    <p class="black-small">ベースライン量</p>
+                    <input id="indicatorBaseline" type="number" placeholder="ベースライン量" value="{{ outcome['json']['indicatorBaseline'] }}">
+                    <p class="black-small">目標量</p>
+                    <input id="indicatorTarget" type="number" placeholder="目標量" value="{{ outcome['json']['indicatorTarget'] }}">
+                    <p class="black-small">ユニット</p>
+                    <input id="indicatorUnit" type="text" placeholder="ユニット" value="{{ outcome['json']['indicatorUnit'] }}">
+                    <br>                
+                </div>
+                <div class="form-part-right">
+                    <p class="gray-small">例</p>
+                    <p>家計負債水準-1世帯あたり</p>
+                    <ul>
+                        <li>ベースライン：250,000バーツ</li>
+                        <li>目標：150,000バーツ</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">以下に示すアウトプットを測定するのに役立つ指標を特定するか、独自の指標を作成してください。選択した指標の適切性を評価するために、ステークホルダーと再確認することをお勧めします。また、データ収集や管理コストの観点から、指標の実用性を検討する必要があります。</p>
+        </div>
+        
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">どのプロジェクトのインパクト目標が、このアウトカムに適合しているか？</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">どのプロジェクトのインパクト目標が、このアウトカムに適合しているか？</p>
+                    <div id="impactCheckWrapper"></div>
+                    <br>                
+                </div>
+                <div class="form-part-right">
+                    <p class="gray-small">例</p>
+                    <p>タイ南部の小規模漁業者の経済的ウェルビーイングを向上させる。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-wrapper">
+            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">提出</button>
+        </div>
+        <br>
+    </div>
+</main>
+<script src="/static/outcome-edit.js"></script>
+{% endblock %}

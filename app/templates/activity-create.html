@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< プロジェクトへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div id="formApp">
+        <div id="csrf">{{ form.csrf_token }}</div>
+        <div id="projectId" style="display: none;">{{ project.id }}</div>
+        <div id="stakeholderId" style="display: none;">{{ stakeholder.id }}</div>
+
+        <h1>活動を追加する</h1>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">活動を追加する</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">活動を追加する</p>
+                    <textarea id="activity" type="text" placeholder="活動を追加する"></textarea><br>             
+                </div>
+                <div class="form-part-right">
+                    <p class="gray-small">例</p>
+                    <p>フィッシャーフォークスは小規模漁民から市場価格より5-20％高い価格で漁獲物を買い上げる</p>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">ステークホルダーの問題やニーズ、またはステークホルダーが参加しなければならない活動に対処するために取られた介入策を記述します。</p>
+        </div>
+
+        <div class="button-wrapper">
+            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">提出</button>
+        </div>
+        <br>
+    </div>
+</main>
+<script src="/static/activity-create.js"></script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper no-print">
+    <span class="no-print"><a href="/">< ホームへ戻る</a></span>
+</div>
+
+<main>
+    <div class="main-bg-wrapper">
+        <div class="align-center">
+            <h1>パブリックインパクトモデル</h1>
+        </div>
+        <div class="homecard-flex-wrapper">
+            {% for project_published in projects_published %}
+                <div class="homecard-flex">
+                    <a class="no-decoration" href="/project/{{ project_published.id }}">
+                        <div class="homecard-inner-flex-wrapper">
+                            <div class="homecard-inner-flex-img">
+                                {% if project_published.img_url %}
+                                    {% if project_published.img_url|length > 2 %}
+                                        <img class="homecard" src="{{ project_published.img_url|img_convert }}" alt="{{ project_published.json['title'] }} logo">
+                                    {% else %}
+                                        <img class="homecard" src="/static/impactflow-logo.png" alt="Placeholder logo">
+                                    {% endif %}
+                                {% else %}
+                                    <img class="homecard" src="/static/impactflow-logo.png" alt="Placeholder logo">
+                                {% endif %}
+                            </div>
+                            <div class="homecard-inner-flex-content">
+                                <h2>{{ project_published.json['title'] }}</h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<br>
+{% endblock %}

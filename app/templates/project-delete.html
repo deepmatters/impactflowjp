@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< プロジェクトへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div class="login-wrapper">
+        <h1>プロジェクト削除の確認</h1>
+        <p>本当にプロジェクトを削除してよいですか？ {{ project['json']['title'] }}</p>
+        <p class="red-em">削除した場合、インパクト・モデルを含む関連するすべての情報も削除されます。</p>
+        <p>[ <a href="/project/{{ project.id }}/delete/confirm">プロジェクト削除の確認</a> ]</p>
+        <p>[ <a href="/project/{{ project.id }}">プロジェクト削除のキャンセル</a> ]</p>
+    </div>
+</div>
+{% endblock %}

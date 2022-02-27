@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< ホームへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div id="formApp">
+        <div id="csrf">{{ form.csrf_token }}</div>
+        <div id="projectId" style="display:none">{{ project.id }}</div>
+        <div id="data" style="display:none">{{ data }}</div>
+
+        <h1>プロジェクト編集</h1>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">プロジェクト/組織名</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">プロジェクト/組織名</p>
+                    <input id="title" type="text" value="{{ project['json']['title'] }}">
+                    <br>
+                </div>
+                <div class="form-part-right">
+                    <p class="black-small">例</p>
+                    <p>フィッシャーフォーク</p>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">組織で複数のプロジェクトがある場合、混乱を避けるために、それぞれ別のプロジェクトプロファイルを作成することをお勧めします。</p>
+        </div>
+        
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">インパクト目標</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <div id="impactWrapper"></div>
+                    <br>
+                    <button class="button" type="button" onclick="impactAdd()">+ 客観性を追加</button>&nbsp;
+                    <button class="button" type="button" onclick="impactMinus()">- 最後の目的を削除する</button>
+                    <div class="spacer-big"></div>                
+                </div>
+                <div class="form-part-right">
+                    <p class="black-small">例</p>
+                    <p>
+                        <ul>
+                            <li>タイ南部の小規模漁民の経済的福祉を向上させる。</li>
+                            <li>雇用を通じて小規模漁業世帯の女性のエンパワーメントを図る。</li>
+                            <li>持続可能な漁業による海洋生態系の保全</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">プロジェクト/組織のインパクトの目標について説明してください。プロジェクト/組織が達成しようとする究極のインパクトは何ですか？</p>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">概要</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">概要</p>
+                    <textarea id="summary">{{ project['json']['summary'] }}</textarea>                
+                </div>
+                <div class="form-part-right">
+                    <p class="black-small">例</p>
+                    <p>フィッシャーフォーク（Fisherfolk）は、持続可能な漁業、水産物のより良いバリューチェーン、化学物質を含まない水産物を消費することの重要性を推進する女性主導の社会的企業です。地元の小規模漁業者とともに海洋保護に取り組み、適切な漁具の使用について教育し、ルールを守って化学薬品を使用しない漁業者からのみ、市場価格より5～20％高い報酬を支払って調達しています。さらに、フィッシャーフォークは、漁師の家庭の女性たちに研修と水産加工施設での雇用機会を提供しています。</p>
+                    <p>フィッシャーフォークは、タイ南部のプラチュアン、ナコンシタマラート、サトゥーン、パタールン、ソンクラーの5カ所に水産加工施設を有しています。漁獲された魚介類は冷凍シーフードに加工された後、近代的な貿易ルートと独自のソーシャルメディアチャネルの両方を通じて最終製品が流通します。利益の20%は、フィッシャーフォークのネットワークに参加している小規模漁業者が行っている保護活動に還元される予定です。</p>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">業務範囲の詳細を記載します。プロジェクト／組織が解決しようとしている問題、実行プロセス、関与するパートナー、リソース、活動などの概要を説明します。</p>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">期間 （月）</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">月数</p>
+                    <p id="durationGuide" class="red-em" style="display: none;">整数で入力してください</p>
+                    <input id="duration" type="number" placeholder="月数" value="{{ project['json']['duration'] }}">                
+                </div>
+                <div class="form-part-right">
+                    <p class="black-small">例</p>
+                    <p>12ヶ月（注：継続的な活動ですが、期間はインパクト報告期間に準じます。）</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">予算</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">予算 （日本円）</p>
+                    <p id="budgetGuide" class="red-em" style="display: none;">数字はカンマ（,）を入れずに入力してください。ピリオド(.)は使用可能です。</p>
+                    <input id="budget" type="number" placeholder="金額(円)" value="{{ project['json']['budget'] }}">                
+                </div>
+                <div class="form-part-right">
+                    <p class="black-small">例</p>
+                    <p>該当なし（具体的な予算があるインパクト・プロジェクトに適用される）</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">チーム</h2>
+            <div id="teamWrapper"></div>
+            
+            <br>
+            <button class="button" type="button" onclick="teamAdd()">+ 人を追加する</button>&nbsp;
+            <button class="button" type="button" onclick="teamMinus()">- 最後の人を削除します</button>
+            <div class="spacer-big"></div>
+            <br>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">このプロジェクトとそのインパクトモデルを一般に公開したいですか？</h2>
+            <input type="checkbox" id="published" name="publish-checkbox" value="published">
+            <label for="publish-checkbox"> 共有</label>
+            <br>
+        </div>
+        
+        <br>
+        <div class="button-wrapper">
+            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">提出</button>
+        </div>
+        <br>
+    </div>
+</main>
+<script src="/static/project-edit.js"></script>
+{% endblock %}

@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <div class="home-wrapper">
+        <div class="home-content">
+            <h1 class="header-home">インパクト・フロー</h1>
+            <div class="home-nonflex-wrapper">
+                <p>インパクトフローは、SDGのインパクトをより効果的に理解、計画、管理する上で、非営利組織、社会的企業、さらには企業CSRプロジェクトを含むインパクトのある組織をサポートするオンラインインパクト管理ツールです。</p>
+            </div>
+        </div>
+    </div>
+    <div class="spacer-big"></div>
+    {% if not current_user.is_authenticated %}
+        <div class="main-bg-wrapper">
+            <div class="align-center">
+                <h1>なぜインパクト・フローなのか</h1>
+            </div>
+            <div class="home-flex-wrapper">
+                <div class="home-left">
+                    <img src="/static/1-sdg.svg" alt="SDG focused">
+                </div>
+                <div class="home-right">
+                    <h3>SDGs重視</h3>
+                    <p class="gray-standard">国連のSDGsの枠組みに基づき、インパクトのある組織がインパクトを定義するためのガイドとなるツールです。異なるセクター間のインパクト・コミュニケーションを促進します。</p>
+                </div>
+            </div>
+            <div class="border"></div>
+            <div class="home-flex-wrapper">
+                <div class="home-left">
+                    <h3>ステークホルダー志向</h3>
+                    <p class="gray-standard">フレームワークの設計により、プロジェクトオーナーがステークホルダーの視点からインパクトを見ることができるようになります。インパクトの明確な見方を提供します。</p>
+                </div>
+                <div class="home-right">
+                    <img src="/static/2-stakeholder.svg" alt="Stakeholder oriented">
+                </div>
+            </div>
+            <div class="border"></div>
+            <div class="home-flex-wrapper">
+                <div class="home-left">
+                    <img src="/static/4-share.svg" alt="Impact data disclosure">
+                </div>
+                <div class="home-right">
+                    <h3>ワンストップ・ツールキット</h3>
+                    <p class="gray-standard">インパクト・プランニング、指標の選定、データ収集、モニタリング、評価まで、インパクトマネジメントの全プロセスをカバーする包括的なツールです。</p>
+                </div>
+            </div>
+            <div class="border"></div>
+            <div class="home-flex-wrapper">
+                <div class="home-left">
+                    <h3>インパクトデータの開示を促進</h3>
+                    <p class="gray-standard">すべてのインパクトデータを一元的に管理し、効率的な運用を実現します。プロジェクトオーナーは、プラットフォームから直接プロジェクト情報やインパクトデータを開示することができます。
+                    </p>
+                </div>
+                <div class="home-right">
+                    <img src="/static/1-sdg.svg" alt="SDG focused">
+                </div>
+            </div>
+        </div>
+        <div class="home-wrapper">
+            <div class="home-content">
+                <div class="align-center">
+                    <h1>開発の経緯</h1>
+                </div>
+                <div class="home-nonflex-wrapper">
+                    <p>インパクト・フローは、インパクト組織全般の説明責任と透明性の向上に不可欠なSDGsインパクトのモニタリングとレポーティングを容易にする標準的なインパクト管理ツールの開発を目的としたソーシャル・バリュー・ジャパンとChangeFusionの共同プロジェクトです。</p>
+                    <p>また、共通のインパクトレポート基準があれば、異なるセクター間におけるインパクトの理解やインパクトデータの統合が容易になります。</p>
+                    <p>エビデンスに基づくインパクトの伝達を支援するツールにより、インパクトの創出を促進するためのインパクト投資の発展をさらに後押しすることになります。</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if current_user.is_authenticated %}
+        <div class="main-bg-wrapper">
+            <div class="align-center">
+                <h1>マイ　インパクト・モデル</h1>
+            </div>
+            
+            {% if not projects %}
+                <div class="align-center">
+                    <a href="/project-create"><button class="button">作成インパクトモデル</button></a>
+                </div>
+                <div class="spacer-big"></div>
+            {% else %}
+                <div class="align-center">
+                    <a href="/project-create"><button class="button">作成インパクトモデル</button></a>
+                </div>
+                <div class="spacer-big"></div>
+            {% endif %}
+            <div class="homecard-flex-wrapper">
+                {% for project in projects %}
+                    <div class="homecard-flex">
+                        <a class="no-decoration" href="/project/{{ project.id }}">
+                            <div class="homecard-inner-flex-wrapper">
+                                <div class="homecard-inner-flex-img">
+                                    {% if project.img_url %}
+                                        {% if project.img_url|length > 2 %}
+                                            <img class="homecard" src="{{ project.img_url|img_convert }}" alt="{{ project.json['title'] }} logo">
+                                        {% else %}
+                                            <img class="homecard" src="/static/impactflow-logo.png" alt="Placeholder logo">
+                                        {% endif %}
+                                    {% else %}
+                                        <img class="homecard" src="/static/impactflow-logo.png" alt="Placeholder logo">
+                                    {% endif %}
+                                </div>
+                                <div class="homecard-inner-flex-content">
+                                    <h2>{{ project.json['title'] }}</h2>
+                                    <p>{{ project.json['objectives']|truncate(100) }}</p>
+                                    {% if project.json['published'] %}
+                                        <span class="shared">共有</span>
+                                    {% else %}
+                                        <span class="private">プライベート</span>
+                                    {% endif %}
+                                    <br><br>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+        <br>
+    {% endif %}
+    
+    <div class="main-bg-wrapper">
+        <div class="align-center">
+            <h1>パブリックインパクトモデル</h1>
+        </div>
+        <div class="homecard-flex-wrapper">
+            {% for project_published in projects_published %}
+                {% if loop.index <= 6 %}
+                    <div class="homecard-flex">
+                        <a class="no-decoration" href="/project/{{ project_published.id }}">
+                            <div class="homecard-inner-flex-wrapper">
+                                <div class="homecard-inner-flex-img">
+                                    {% if project_published.img_url %}
+                                        {% if project_published.img_url|length > 2 %}
+                                            <img class="homecard" src="{{ project_published.img_url|img_convert }}" alt="{{ project_published.json['title'] }} logo">
+                                        {% else %}
+                                            <img class="homecard" src="/static/impactflow-logo.png" alt="Placeholder logo">
+                                        {% endif %}
+                                    {% else %}
+                                        <img class="homecard" src="/static/impactflow-logo.png" alt="Placeholder logo">
+                                    {% endif %}
+                                </div>
+                                <div class="homecard-inner-flex-content">
+                                    <h2>{{ project_published.json['title'] }}</h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="align-center">
+            <a class="no-decoration" href="/project-all"><button class="button-main">すべてのプロジェクトを表示</button></a>
+        </div>
+        
+        
+        <br>
+        {% if current_user.is_authenticated %}
+            {% if current_user.role == 'admin' %}
+                <hr>
+                <br>
+                <div class="align-center">
+                    <h1>プライベート・インパクト・モデル</h1>
+                    <span class="admin">管理者のみ閲覧可能</span>
+                </div>
+                {% for project_unpublished in projects_unpublished %}
+                    <p><a href="/project/{{ project_unpublished.id }}">{{ project_unpublished.json['title'] }}</a> <span class="gray-small">作成： {{ project_unpublished.create_dt|datetimefilter }}</span></p>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </div>
+    
+</main>
+<br>
+{% endblock %}

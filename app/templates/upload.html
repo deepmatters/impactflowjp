@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <div class="main-wrapper">
+        <div id="csrf">{{ form.csrf_token }}</div>
+        <div id="projectId" style="display:none">{{ project.id }}</div>
+        
+        <h1>ロゴのアップロード</h1>
+        <ul>
+            <li>png, jpg, jpeg, gif, heic のみ受け付けます。</li>
+            <li>ファイルを選択すると、即座にアップロードされます。ファイルを変更したい場合は、新しいファイルを選択します。前のファイルは自動的に置き換わります。</li>
+        </ul>
+        <p>アップロードするには、「参照」をクリックします。</p>
+        <form id="fileUploader">
+            <!-- <input id="fileInput" type="file" multiple> -->
+            <input id="fileInput" type="file">
+        </form>
+        <h2>アップロードの状況</h2>
+        <p>:: <span id="uploadStatus">ファイルが選択させていません</span></p>
+        <div id="fileRepo"></div>
+        <br>
+        <div id="fileResult"></div>
+        <div class="spacer-big"></div>
+        <button type="button" class="button" onclick="fileUrlsSubmit()">保存して戻る</button>
+    </div>
+</main>
+<script src="/static/file-uploader.js"></script>
+{% endblock %}

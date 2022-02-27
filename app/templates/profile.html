@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper">
+    <p><a href="/">< ホームへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <h1>マイ　プロフィール</h1>
+    <div class="main-flex-wrapper">
+        <div class="main-flex-right">
+            <h2 class="form-section-title">マイ　プロフィール</h2>
+            <span class="gray-small">ユーザーID</span><br>
+            {{ user.id }}<br><div class="spacer-big"></div>
+            <span class="gray-small">名前</span><br>
+            {{ user.name }}<br><div class="spacer-big"></div>
+            <span class="gray-small">メールアドレス</span><br>
+            {{ user.email }}<br><div class="spacer-big"></div>
+            <span class="gray-small">パスワード</span><br>
+            ********<br>
+            <a class="no-decoration" href="/password-change"><img src="/static/repassword.svg" alt="Change password"><span class="edit-text-link"> パスワード変更</a><br><div class="spacer-big"></div>
+            <span class="gray-small">ユーザータイプ</span><br>
+            {{ user.role }}<br><div class="spacer-big"></div>
+            <span class="gray-small">アカウント作成日</span><br>
+            {{ user.create_dt.strftime('%d-%m-%Y') }}<br><div class="spacer-big"></div>
+            <span class="gray-small">最終ログイン</span><br>
+            {{ user.lastlogin_dt.strftime('%d-%m-%Y') }}<br><div class="spacer-big"></div>
+            <br>
+            <a class="no-decoration" href="/logout"><img src="/static/account-logout.svg" alt="Logout"><span class="edit-text-link"> ログアウト</span></a>
+            <br><br>
+        </div>
+        <div class="main-flex-left">
+            <h2 class="form-section-title">マイ　プロジェクト</h2>
+            <a class="no-decoration" href="/project-create"><button class="button">作成インパクトモデル</button></a>&nbsp;&nbsp;
+            <a class="no-decoration" href="/"><button class="button">マイ　プロジェクト</button></a><br><br>
+
+            {% for project in projects %}
+                <h2><a href="/project/{{ project.id }}">{{ project.json['title'] }}</a></h2>
+                {% if project.published == True %}
+                    <span class="shared no-print">共有</span><br><div class="spacer-big"></div>
+                {% else %}
+                    <span class="private no-print">プライベート</span><br><div class="spacer-big"></div>
+                {% endif %}
+                <span class="gray-small">作成</span> &nbsp;&nbsp;&nbsp;<span class="black-small">{{ project.create_dt|datetimefilter }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if project.mod_dt %}
+                    <span class="gray-small">変更</span> &nbsp;&nbsp;&nbsp;<span class="black-small">{{ project.mod_dt|datetimefilter }}</span>
+                {% endif %}
+                <hr>
+            {% endfor %}
+            
+            {% if current_user.role == 'admin' %}
+                <br>
+                <h2 class="form-section-title">管理者用ツール</h2>
+                <a class="no-decoration" href="/indicator/view"><button class="button">指標バンクの管理</button></a>
+                <br>
+                <div class="spacer-big"></div>
+            {% endif %}
+            
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

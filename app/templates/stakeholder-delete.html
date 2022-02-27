@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< プロジェクトへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div class="login-wrapper">
+        <h1>プロジェクト・ステークホルダー削除の確認</h1>
+        <p>本当にステークホルダーを削除しますか？ {{ stakeholder['json']['stakeholder'] }}</p>
+        <p class="red-em">削除した場合、関連する活動を含むすべての関連情報も削除されます。</p>
+        <p>[ <a href="/project/{{ project.id }}/{{ stakeholder.id }}/delete/confirm">ステークホルダー削除の確認</a> ]</p>
+        <p>[ <a href="/project/{{ project.id }}">ステークホルダー削除のキャンセル</a> ]</p>
+    </div>
+</div>
+{% endblock %}

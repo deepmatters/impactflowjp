@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< プロジェクトへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div id="formApp">
+        <div id="csrf">{{ form.csrf_token }}</div>
+        <div id="projectId" style="display: none;">{{ project.id }}</div>
+        <div id="stakeholderId" style="display: none;">{{ stakeholder.id }}</div>
+        <div id="activityId" style="display: none;">{{ activity.id }}</div>
+
+        <h1>アウトプットを追加する</h1>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">アウトプット</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">アウトプット</p>
+                    <textarea id="output" type="text" placeholder="アウトプット"></textarea><br>              
+                </div>
+                <div class="form-part-right">
+                    <p class="gray-small">例</p>
+                    <p>収入の増加</p>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">記載された活動に基づいて、直接的、短期的な結果や変化を記述してください。</p>
+        </div>
+
+        <div class="form-section-wrapper">
+            <h2 class="form-section-title">指標</h2>
+            <div class="form-part-wrapper">
+                <div class="form-part-left">
+                    <p class="black-small">標準となる指標バンクを検索する</p>
+                    <input type="text" id="searchBox" class="search-box" placeholder="キーワードを入力する" onkeyup="searchSubmit()">
+                    <button type="button" class="search-button" onclick="searchSubmit()" style="display: none;">検索</button>
+                    <br>
+                    
+                    <div id="searchResultNumWrapper" style="display:none">
+                        <button type="button" class="search-clear-button" onclick="searchClear()">明確な結果</button>
+                        <p>結果 <span id="searchResultNum">0</span> エントリー</p>
+                    </div>
+                    <div id="searchResult" class="search-result"></div>
+                    <div class="spacer-big"></div>
+            
+                    <p class="blue-em">--- または、独自の指標を使用する ---</p>
+                    <input id="indicatorCategory" type="text" placeholder="カテゴリー" style="display: none;">
+                    <textarea id="indicator" type="text" placeholder="指標"></textarea><br>
+                    <p class="black-small">ベースライン量</p>
+                    <input id="indicatorBaseline" type="number" placeholder="ベースライン量">
+                    <p class="black-small">目標量</p>
+                    <input id="indicatorTarget" type="number" placeholder="目標量">
+                    <p class="black-small">ユニット</p>
+                    <input id="indicatorUnit" type="text" placeholder="ユニット">
+                    <br>                
+                </div>
+                <div class="form-part-right">
+                    <p class="gray-small">例</p>
+                    <p>SDGs目標2_飢餓をなくす 2.3 小規模食料生産者の農業生産性と所得を倍増させる 小規模食料生産者の平均所得（性別及び先住民の地位別）（SDGs）</p>
+                    <ul>
+                        <li>ベースライン：8,000バーツ</li>
+                        <li>目標：10,000バーツ</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="black-small">提案</p>
+            <p class="gray-small">以下に示すアウトプットを測定するのに役立つ指標を特定するか、独自の指標を作成してください。選択した指標の適切性を評価するために、ステークホルダーと再確認することをお勧めします。また、データ収集や管理コストの観点から、指標の実用性を検討する必要があります。</p>
+        </div>
+        
+        <div class="button-wrapper">
+            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">提出</button>
+        </div>
+        <br>
+    </div>
+</main>
+<script src="/static/output-create.js"></script>
+{% endblock %}

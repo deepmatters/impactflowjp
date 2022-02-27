@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper">
+    <div class="login-wrapper">
+        <h1 class="login">ログイン</h1>
+        <form method="POST" action="/login">
+            {{ form.csrf_token }}
+            <div class="input-wrapper">
+                {{ form.email.label }}
+                {{ form.email(size=23, placeholder="メールアドレス", autofocus=true) }}<br>
+                {{ form.password.label }}
+                {{ form.password(size=23, placeholder="パスワード") }}<br>
+            </div>
+            <div class="button-wrapper">
+                {{ form.submit(class_="button") }}
+            </div>
+        </form>
+        <p class="gray-small"><a href="/forget">パスワードを忘れた</a></p>
+        <br>
+        <hr>
+        <div class="circle-with-text">
+            また
+        </div>
+        <div class="spacer-big"></div>
+        <p class="login-link"><a href="/signup">アカウントを作成する</a></p>
+        
+    </div>
+</div>
+{% endblock %}

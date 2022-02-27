@@ -1,0 +1,424 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper no-print">
+    <span class="no-print"><a href="/">< ホームへ戻る</a></span>
+</div>
+
+<div class="main-bg-wrapper">    
+    <div class="spacer-big no-print"></div>
+    <div class="project-head-wrapper">
+        <div class="project-head-img">
+            {% if imgs %}
+                <img class="org-logo" src="{{ imgs[0] }}" alt="{{ project.title }} logo">
+            {% else %}
+                <img class="org-logo placeholder" src="/static/impactflow-logo.png" alt="Placeholder image">
+            {% endif %}
+            {% if editable %}
+                <div class="no-print">
+                    <div class="align-center">
+                        <br>
+                        <a class="no-decoration" href="/project/{{ project.id }}/upload"><img src="/static/image.svg" alt="Image upload"><span class="edit-text-link"> ロゴのアップロード</a></span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="project-head-content">
+            <h1>{{ project['json']['title'] }}</h1>
+            {% if editable %}
+                <div class="no-print">
+                    <a class="no-decoration" href="/project/{{ project.id }}/edit"><img src="/static/edit.svg" alt="Edit"> <span class="edit-text-link"> プロジェクト情報の編集</span></a>&nbsp;&nbsp;
+                    <a class="no-decoration" href="/project/{{ project.id }}/delete"><img src="/static/delete.svg" alt="Delete"></a> &nbsp;<span class="edit-text-link">|</span> &nbsp;
+                    <a class="no-decoration" href="#" onclick="projectPrint(); return false;"><span class="edit-text-link">プロジェクトを印刷する</span></a>
+                    <br><br>
+                </div>
+            {% endif %}
+            <span class="url">https://impactflow.org/project/{{ project.id }}</span>
+            {% if project.published == True %}
+                <span class="shared no-print">共有</span>
+                {% if editable %}
+                    <span class="share-toggle-off no-print"><a href="/project/{{ project.id }}/publish/off">共有解除</a></span>
+                {% endif %}
+            {% else %}
+                <span class="private no-print">プライベート</span>
+                {% if editable %}
+                    <span class="share-toggle-on no-print"><a href="/project/{{ project.id }}/publish/on">共有</a></span>
+                {% endif %}
+            {% endif %}
+            <!-- {% if project.mod_dt %}
+                <p class="gray-small">Created: {{ project.create_dt|datetimefilter }} | Last edit: {{ project.mod_dt|datetimefilter }}</p>
+            {% else %}
+                <p class="gray-small">Created: {{ project.create_dt|datetimefilter }}</p>
+            {% endif %} -->
+
+            <h2 class="form-section-title">概要</h2>
+            <p>{{ project['json']['summary'] }}</p>
+            <div class="project-head-detail-wrapper">
+                <div class="project-head-detail-left">
+                    <p>
+                        <span class="gray-small">期間</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project['json']['duration'] }} 月<br>
+                        <span class="gray-small">予算</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ "{:,.2f}".format(project['json']['budget']) }} 日本円
+                    </p>
+                </div>
+                <div class="project-head-detail-right">
+                    <p>
+                        {% for team in project['json']['team'] %}
+                            {% if loop.index == 1 %}
+                                <span class="gray-small">チーム</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ team['teamName'] }} ({{ team['teamPosition'] }})<br>
+                            {% else %}
+                                <span class="gray-small" style="visibility: hidden">チーム &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ team['teamName'] }} ({{ team['teamPosition'] }})
+                            {% endif %}
+                        {% endfor %}
+                    </p>      
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+       
+    <h2 class="form-section-title">インパクト目標</h2>
+    <div class="project-sdg-wrapper">
+        {% for impact in project['json']['impact'] %}
+            <div class="project-sdg-item">
+                <p><strong>{{ impact['objective'] }}</strong></p>
+                {% if impact['sdg']|length > 2 %}
+                    <div class="impact-wrapper">
+                        <div class="impact-sdg">
+                            {% if impact['sdg'] == '目標1 貧困をなくそう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_1.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標2 飢餓をゼロに' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_2.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標3 全ての人に健康と福祉を' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_3.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標4 質の高い教育をみんなに' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_4.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標5 ジェンダー平等を実現しよう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_5.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標6 安全な水とトイレを世界中に' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_6.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標7 エネルギーをみんなにそしてクリーンに' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_7.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標8 働きがいも経済成長も' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_8.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標9 産業と技術革新の基盤をつくろう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_9.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標10 人や国の不平等をなくそう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_10.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標11 住み続けられるまちづくりを' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_11.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標12 つくる責任つかう責任' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_12.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標13 気候変動に具体的な対策を' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_13.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標14 海の豊かさを守ろう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_14.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標15 陸の豊かさを守ろう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_15.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標16 平和と公正をすべての人に' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_16.png" alt="{{ impact['sdg'] }}">
+                            {% elif impact['sdg'] == '目標17 パートナーシップで目標を達成しよう' %}
+                                <img class="sdg-icons" src="/static/TheGlobalGoals_Icons_Color_Goal_17.png" alt="{{ impact['sdg'] }}">
+                            {% endif %}
+                        </div>
+                        <div class="impact-content">
+                            <span>{{ impact['sdg'] }}</span>
+                            {% for target in impact['target'] %}
+                                <p class="black-small">{{ target }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="spacer-big"></div>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+ 
+    <h2 class="form-section-title">インパクト・モデル</h2>
+    <p class="no-print">インパクトモデルは、関係する様々なステークホルダーに関して、どのようにインパクトが生まれるかを示すフレームワークを提供するのに役立ちます。これは、活動、アウトプット、アウトカム、インパクトがどのように論理的に結びついているかを概説し、データ収集と分析のための基礎を提供するものです。</p>
+    <p class="no-print">ステークホルダー志向のアプローチにより、ステークホルダーのニーズ、実行すべき活動、期待される成果が一致しているかどうかを再確認することが容易になります。</p>
+    {% if editable %}
+        {% if outcomes|length > 0 %}
+            {% if impact_diff_ordered|length > 0 %}
+                <div class="caution-zone no-print">
+                    <p>以下のプロジェクトの目標は、現在、どのアウトカムによっても達成されていません。これらの目標に適合するアウトカムが少なくとも1つあることを確認してください。</p>
+                    <ul>
+                        {% for diff in impact_diff_ordered %}
+                            <li>{{ diff }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <br>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% if not stakeholders %}
+        {% if editable %}
+            <p class="no-print"><strong>ステークホルダーを追加して、インパクトモデルの作成を開始します。</strong></p>
+            <div class="align-center">
+                <a class="no-decoration no-print" href="/project/{{ project.id }}/stakeholder-create"><button class="button">ステークホルダーの追加</button></a>
+            </div>
+            
+        {% endif %}
+    {% else %}
+        <table>
+        {% for stakeholder in stakeholders %}
+            <tr>
+                <td class="stakeholder" colspan="3">
+                    <br>
+                    <div class="project-stakeholder-wrapper">
+                        <div class="project-stakeholder-left">
+                            <span class="gray-small">ステークホルダー</span> &nbsp;&nbsp;&nbsp;<span><strong>{{ stakeholder['json']['stakeholder'] }}</strong></span><br>
+                            <div class="spacer-big"></div>
+                            <span class="gray-small">概要</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="black-small">{{ stakeholder['json']['description'] }}</span><br>
+                            <div class="spacer-big"></div>
+                        </div>
+                        <div class="project-stakeholder-right">
+                            <span class="gray-small">受益者の種類 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="black-small">{{ stakeholder['json']['degree'] }}</span><br>
+                            <div class="spacer-big"></div>
+                            <span class="gray-small">重要性の程度</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="black-small">{{ stakeholder['json']['importance'] }}</span><br>
+                        </div>
+                        
+                        {% if editable %}
+                            <div class="no-print">
+                                <div class="spacer-big"></div>
+                                <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/edit"><img src="/static/edit.svg" alt="Edit"></a>
+                                <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/delete"><img src="/static/delete.svg" alt="Delete"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <th class="activity">活動</th>
+                <th class="activity">アウトプット</th>
+                <th class="activity">アウトカム</th>
+            </tr>
+            <tr>
+                <td class="activity">
+                    {% for activity in activities %}
+                        {% if activity[0] == stakeholder.id %}
+                            <div class="activity-index" style="background-color: {{ activity[1]['json']['bgcolor'] }};">
+                                {% if loop.index == 1%}A
+                                {% elif loop.index == 2 %}B
+                                {% elif loop.index == 3 %}C
+                                {% elif loop.index == 4 %}D
+                                {% elif loop.index == 5 %}E
+                                {% elif loop.index == 6 %}F
+                                {% elif loop.index == 7 %}G
+                                {% elif loop.index == 8 %}H
+                                {% elif loop.index == 9 %}I
+                                {% elif loop.index == 10 %}J
+                                {% elif loop.index == 11 %}K
+                                {% elif loop.index == 12 %}L
+                                {% elif loop.index == 13 %}M
+                                {% elif loop.index == 14 %}N
+                                {% elif loop.index == 15 %}O
+                                {% elif loop.index == 16 %}P
+                                {% elif loop.index == 17 %}Q
+                                {% elif loop.index == 18 %}R
+                                {% elif loop.index == 19 %}S
+                                {% elif loop.index == 20 %}T
+                                {% elif loop.index == 21 %}U
+                                {% elif loop.index == 22 %}V
+                                {% elif loop.index == 23 %}W
+                                {% elif loop.index == 24 %}X
+                                {% elif loop.index == 25 %}Y
+                                {% elif loop.index == 26 %}Z
+                                {% endif %}
+                            </div>
+                            
+                            <div class="activity-wrapper">
+                                <div class="activity-inner-wrapper">
+                                    <div class="activity-inner-color" style="background-color: {{ activity[1]['json']['bgcolor'] }};">
+                                        
+                                    </div>
+                                    <div class="activity-inner-content">
+                                        <h2>{{ activity[1]['json']['activity'] }}</h2>
+                                        {% if editable %}
+                                            <div class="no-print">
+                                                <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/edit"><img src="/static/edit.svg" alt="Edit"></a>
+                                                <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/delete"><img src="/static/delete.svg" alt="Delete"></a>
+                                            </div>
+                                        {% endif %}
+                                        <div class="spacer-big"></div>                                         
+                                    </div>
+                                </div>      
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% if editable %}
+                        <div class="no-print">
+                            <a class="no-decoration" href="/project/{{ project.id }}/{{ stakeholder.id }}/activity-create"><button class="add-model">+ 活動の追加 ({{ stakeholder['json']['stakeholder'] }})</button></a>
+                        </div>
+                    {% endif %}
+                </td>
+                <td class="activity">
+                    {% for activity in activities %}
+                        {% if activity[0] == stakeholder.id %}
+                            <div class="activity-index" style="background-color: {{ activity[1]['json']['bgcolor'] }};">
+                                {% if loop.index == 1%}A
+                                {% elif loop.index == 2 %}B
+                                {% elif loop.index == 3 %}C
+                                {% elif loop.index == 4 %}D
+                                {% elif loop.index == 5 %}E
+                                {% elif loop.index == 6 %}F
+                                {% elif loop.index == 7 %}G
+                                {% elif loop.index == 8 %}H
+                                {% elif loop.index == 9 %}I
+                                {% elif loop.index == 10 %}J
+                                {% elif loop.index == 11 %}K
+                                {% elif loop.index == 12 %}L
+                                {% elif loop.index == 13 %}M
+                                {% elif loop.index == 14 %}N
+                                {% elif loop.index == 15 %}O
+                                {% elif loop.index == 16 %}P
+                                {% elif loop.index == 17 %}Q
+                                {% elif loop.index == 18 %}R
+                                {% elif loop.index == 19 %}S
+                                {% elif loop.index == 20 %}T
+                                {% elif loop.index == 21 %}U
+                                {% elif loop.index == 22 %}V
+                                {% elif loop.index == 23 %}W
+                                {% elif loop.index == 24 %}X
+                                {% elif loop.index == 25 %}Y
+                                {% elif loop.index == 26 %}Z
+                                {% endif %}
+                            </div>
+                            
+                            {% for output in outputs %}
+                                {% if output[0] == activity[1].id %}
+                                    <div class="activity-wrapper">
+                                        <div class="activity-inner-wrapper">
+                                            <div class="activity-inner-color" style="background-color: {{ activity[1]['json']['bgcolor'] }};">
+
+                                            </div>
+                                            <div class="activity-inner-content">
+                                                <h2>{{ output[1]['json']['output'] }}</h2>
+                                                <p class="impact-type">から {{ activity[1]['json']['activity'] }}</p>
+                                                <p><em><u>{{ output[1]['json']['indicator'] }}</u></em></p>
+                                                <span class="gray-small">ベースライン量</span><br>
+                                                {{ output[1]['json']['indicatorBaseline'] }} {{ output[1]['json']['indicatorUnit'] }}<br>
+                                                <div class="spacer-big"></div>
+                                                <span class="gray-small">目標量</span><br>
+                                                {{ output[1]['json']['indicatorTarget'] }} {{ output[1]['json']['indicatorUnit'] }}<br>
+                                                {% if editable %}
+                                                    <div class="no-print">
+                                                        <br>
+                                                        <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/{{ output[1].id }}/edit"><img src="/static/edit.svg" alt="Edit"></a>
+                                                        <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/{{ output[1].id }}/delete"><img src="/static/delete.svg" alt="Delete"></a>
+                                                    </div>
+                                                {% endif %}
+                                                <div class="spacer-big"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            {% if editable %}
+                                <div class="no-print">
+                                    <a class="no-decoration" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/output-create"><button class="add-model" style="color: #4d4d4d; background-color: {{ activity[1]['json']['bgcolor'] }};">+ アウトプットの追加 ({{ activity[1]['json']['activity'] }})</button></a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                </td>
+                <td class="activity">
+                    {% for activity in activities %}
+                        {% if activity[0] == stakeholder.id %}
+                            <div class="activity-index" style="background-color: {{ activity[1]['json']['bgcolor'] }};">
+                                {% if loop.index == 1%}A
+                                {% elif loop.index == 2 %}B
+                                {% elif loop.index == 3 %}C
+                                {% elif loop.index == 4 %}D
+                                {% elif loop.index == 5 %}E
+                                {% elif loop.index == 6 %}F
+                                {% elif loop.index == 7 %}G
+                                {% elif loop.index == 8 %}H
+                                {% elif loop.index == 9 %}I
+                                {% elif loop.index == 10 %}J
+                                {% elif loop.index == 11 %}K
+                                {% elif loop.index == 12 %}L
+                                {% elif loop.index == 13 %}M
+                                {% elif loop.index == 14 %}N
+                                {% elif loop.index == 15 %}O
+                                {% elif loop.index == 16 %}P
+                                {% elif loop.index == 17 %}Q
+                                {% elif loop.index == 18 %}R
+                                {% elif loop.index == 19 %}S
+                                {% elif loop.index == 20 %}T
+                                {% elif loop.index == 21 %}U
+                                {% elif loop.index == 22 %}V
+                                {% elif loop.index == 23 %}W
+                                {% elif loop.index == 24 %}X
+                                {% elif loop.index == 25 %}Y
+                                {% elif loop.index == 26 %}Z
+                                {% endif %}
+                            </div>
+                            
+                            {% for output in outputs %}
+                                {% if output[0] == activity[1].id %}
+                                    {% for outcome in outcomes %}
+                                        {% if outcome[0] == output[1].id %}
+                                            <div class="activity-wrapper">
+                                                <div class="activity-inner-wrapper">
+                                                    <div class="activity-inner-color" style="background-color: {{ activity[1]['json']['bgcolor'] }};">
+        
+                                                    </div>
+                                                    <div class="activity-inner-content">
+                                                        <h2>{{ outcome[1]['json']['outcome'] }}</h2>
+                                                        <p class="impact-type">から {{ output[1]['json']['output'] }}</p>
+                                                        <p><em><u>{{ outcome[1]['json']['indicator'] }}</u></em></p>
+                                                        <span class="gray-small">ベースライン量</span><br>
+                                                        {{ outcome[1]['json']['indicatorBaseline'] }} {{ outcome[1]['json']['indicatorUnit'] }}<br>
+                                                        <div class="spacer-big"></div>
+                                                        <span class="gray-small">目標量</span><br>
+                                                        {{ outcome[1]['json']['indicatorTarget'] }} {{ outcome[1]['json']['indicatorUnit'] }}<br>
+                                                        <div class="spacer-big"></div>
+                                                        <span class="gray-small">インパクト目標に適合：</span><br>
+                                                        {% for target in outcome[1]['json']['impactCheck'] %}
+                                                            {{ target }}<br>
+                                                        {% endfor %}
+                                                        
+                                                        {% if editable %}
+                                                            <div class="no-print">
+                                                                <br>
+                                                                <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/{{ output[1].id }}/{{ outcome[1].id }}/edit"><img src="/static/edit.svg" alt="Edit"></a>
+                                                                <a class="gray-small" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/{{ output[1].id }}/{{ outcome[1].id }}/delete"><img src="/static/delete.svg" alt="Delete"></a>
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="spacer-big"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if editable %}
+                                        <div class="no-print">
+                                            <a class="no-decoration" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity[1].id }}/{{ output[1].id }}/outcome-create"><button class="add-model" style="color: #4d4d4d; background-color: {{ activity[1]['json']['bgcolor'] }};">+ アウトカムの追加 ({{ output[1]['json']['output'] }})</button></a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        {% if editable %}
+            <tr class="no-print" style="border-top: 1px solid #cccccc;">
+                <td class="align-center" colspan="3">
+                    <br>
+                    <a class="no-decoration" href="/project/{{ project.id }}/stakeholder-create"><button class="button">+ ステークホルダーの追加</button></a>
+                    <div class="spacer-small"></div>
+                </td>
+            </tr>
+        {% endif %}
+        </table>
+        
+    {% endif %}
+</div>
+<script src="/static/project-tool.js"></script>
+{% endblock %}

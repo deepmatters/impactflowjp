@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="社会的インパクト、インパクト評価">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    {% if request.path.split('/')[1] == 'project' %}
+        {% if project.img_url %}
+            {% if project.img_url|length > 2 %}
+                <meta property="og:image" content="{{ project.img_url|img_convert }}">
+            {% else %}
+                <meta property="og:image" content="{{ url_for('static', filename='impactflow-logo.png') }}">
+            {% endif %}
+        {% else %}
+            <meta property="og:image" content="{{ url_for('static', filename='impactflow-logo.png') }}">
+        {% endif %}
+        <meta name="description" content="{{ project['json']['objectives'] }}">
+        <title>{{ project['json']['title'] }}</title>
+    {% else %}
+        <meta property="og:image" content="{{ url_for('static', filename='impactflow-logo.png') }}">
+        <meta name="description" content="社会的インパクトプロジェクトのためのインパクトモデル作成ツール">
+        <title>インパクト・フロー</title>
+    {% endif %}
+</head>
+<body>
+    <div class="body-wrapper">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="header-bg-wrapper no-print">
+            <header class="no-print">
+                <div class="header-flex-wrap">
+                    <div class="header-logo-block">
+                        <a href="/"><img src="/static/impactflow-logo.svg" alt="Impact Flow"></a>
+                    </div>
+                    <div class="header-nav-block">
+                        {% if not current_user.is_authenticated %}
+                            <span class="nav-item"><a class="no-decoration" href="/about">私たちに関しては</a></span>
+                        {% else%}
+                            <span class="nav-item"><a class="no-decoration" href="/about">私たちに関しては</a></span>
+                            <span class="nav-item"><a class="no-decoration" href="/">マイ　プロジェクト</a></span>
+                        {% endif %}
+                    </div>
+                    <div class="header-nav-login">
+                        {% if not current_user.is_authenticated %}
+                            <a class="no-decoration" href="/login"><button class="button-main">ログイン</button></a>
+                        {% else%}
+                            <a class="no-decoration" href="/profile"><button class="button-main">マイ　プロファイル</button></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </header>
+        </div>
+        
+        <div class="header-bottom no-print"></div>
+        {% block content %}{% endblock %}
+        <div class="footer-bg-wrapper no-print">
+            <footer class="no-print">
+                <div class="footer-wrapper">
+                    <div class="align-center">
+                        <img class="impactflow-logo" src="/static/impactflow-logo.svg" alt="Impact Flow logo">
+                        <img class="undp-logo" src="/static/undp-logo.jpg" alt="UNDP logo">
+                        <img class="sec-logo" src="/static/sec-logo.png" alt="SEC logo">
+                        <img class="svj-logo" src="/static/svj-logo.svg" alt="SVJ logo">
+                        <img class="cf-logo" src="/static/cf-logo.png" alt="ChangeFusion logo">
+                        <br>
+                        <p class="gray-small">開発元：ChangeFusion</p><br>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+    </div>
+</body>
+</html>

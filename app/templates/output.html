@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-wrapper">
+    <p><a href="/project/{{ project.id }}">< プロジェクトへ戻る</a></p>
+    <div class="spacer-big"></div>
+    <div class="main-flex-wrapper">
+        <div class="main-flex-left">
+            <p>プロジェクト： {{ project['json']['title'] }}</p>
+            <p>ステークホルダー： {{ stakeholder['json']['stakeholder'] }}</p>
+            <p>活動を追加する： {{ activity['json']['activity'] }}</p>
+            <h1>アウトプット： {{ output['json']['output'] }}</h1>
+            {% if output.mod_dt %}
+                <p class="gray-small">作成： {{ output.create_dt|datetimefilter }} | 変更： {{ output.mod_dt|datetimefilter }}</p>
+            {% else %}
+                <p class="gray-small">作成： {{ output.create_dt|datetimefilter }}</p>
+            {% endif %}
+            <h2>アウトプット</h2>
+            <p>{{ output['json']['output'] }}</p>
+            <h2>指標</h2>
+            <p>カテゴリー {{ output['json']['indicatorCategory'] }}</p>
+            <p>指標 {{ output['json']['indicator'] }}</p>
+            <p>ベースライン量 {{ output['json']['indicatorBaseline'] }}</p>
+            <p>目標量 {{ output['json']['indicatorTarget'] }}</p>
+            <p>ユニット {{ output['json']['indicatorUnit'] }}</p>
+            
+            <br>
+            {% if editable %}
+                <div class="passed-zone">
+                    <div class="spacer-small"></div>
+                    <a class="no-decoration" href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity.id }}/{{ output.id }}/edit"><button class="button">このアウトプットを編集する</button></a>&nbsp;&nbsp;
+                    <span class="caution"><a href="/project/{{ project.id }}/{{ stakeholder.id }}/{{ activity.id }}/{{ output.id }}/delete">このアウトプットを削除する</a></span>
+                </div>
+                <br>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
