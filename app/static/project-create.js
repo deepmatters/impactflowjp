@@ -64,7 +64,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="2.1 2030年までに、飢餓を撲滅し、全ての人々、特に貧困層及び幼児を含む脆弱な立場にある人々が一年中安全かつ栄養のある食料を十分得られるようにする。">
                     <label for="targetGroup${impact}-1">2.1 2030年までに、飢餓を撲滅し、全ての人々、特に貧困層及び幼児を含む脆弱な立場にある人々が一年中安全かつ栄養のある食料を十分得られるようにする。</label>
@@ -103,7 +103,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="3.1 2030年までに、世界の妊産婦の死亡率を出生10万人当たり70人未満に削減する。">
                     <label for="targetGroup${impact}-1">3.1 2030年までに、世界の妊産婦の死亡率を出生10万人当たり70人未満に削減する。</label>
@@ -162,7 +162,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="4.1 2030年までに、全ての子供が男女の区別なく、適切かつ効果的な学習成果をもたらす、無償かつ公正で質の高い初等教育及び中等教育を修了できるようにする。">
                     <label for="targetGroup${impact}-1">4.1 2030年までに、全ての子供が男女の区別なく、適切かつ効果的な学習成果をもたらす、無償かつ公正で質の高い初等教育及び中等教育を修了できるようにする。</label>
@@ -209,7 +209,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="5.1 あらゆる場所における全ての女性及び女児に対するあらゆる形態の差別を撤廃する。">
                     <label for="targetGroup${impact}-1">5.1 あらゆる場所における全ての女性及び女児に対するあらゆる形態の差別を撤廃する。</label>
@@ -252,7 +252,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="6.1 2030年までに、全ての人々の、安全で安価な飲料水の普遍的かつ衡平なアクセスを達成する。">
                     <label for="targetGroup${impact}-1">6.1 2030年までに、全ての人々の、安全で安価な飲料水の普遍的かつ衡平なアクセスを達成する。</label>
@@ -291,7 +291,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="7.1 2030年までに、安価かつ信頼できる現代的エネルギーサービスへの普遍的アクセスを確保する。">
                     <label for="targetGroup${impact}-1">7.1 2030年までに、安価かつ信頼できる現代的エネルギーサービスへの普遍的アクセスを確保する。</label>
@@ -318,7 +318,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="8.1 各国の状況に応じて、一人当たり経済成長率を持続させる。特に後発開発途上国は少なくとも年率７%の成長率を保つ。">
                     <label for="targetGroup${impact}-1">8.1 各国の状況に応じて、一人当たり経済成長率を持続させる。特に後発開発途上国は少なくとも年率７%の成長率を保つ。</label>
@@ -373,7 +373,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="9.1 全ての人々に安価で公平なアクセスに重点を置いた経済発展と人間の福祉を支援するために、地域・越境インフラを含む質の高い、信頼でき、持続可能かつ強靱（レジリエント）なインフラを開発する。">
                     <label for="targetGroup${impact}-1">9.1 全ての人々に安価で公平なアクセスに重点を置いた経済発展と人間の福祉を支援するために、地域・越境インフラを含む質の高い、信頼でき、持続可能かつ強靱（レジリエント）なインフラを開発する。</label>
@@ -412,7 +412,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="10.1 2030年までに、各国の所得下位40%の所得成長率について、国内平均を上回る数値を漸進的に達成し、持続させる。">
                     <label for="targetGroup${impact}-1">10.1 2030年までに、各国の所得下位40%の所得成長率について、国内平均を上回る数値を漸進的に達成し、持続させる。</label>
@@ -459,7 +459,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="11.1 2030年までに、全ての人々の、適切、安全かつ安価な住宅及び基本的サービスへのアクセスを確保し、スラムを改善する。">
                     <label for="targetGroup${impact}-1">11.1 2030年までに、全ての人々の、適切、安全かつ安価な住宅及び基本的サービスへのアクセスを確保し、スラムを改善する。</label>
@@ -506,7 +506,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="12.1 開発途上国の開発状況や能力を勘案しつつ、持続可能な消費と生産に関する10年計画枠組み（10YFP）を実施し、先進国主導の下、全ての国々が対策を講じる。">
                     <label for="targetGroup${impact}-1">12.1 開発途上国の開発状況や能力を勘案しつつ、持続可能な消費と生産に関する10年計画枠組み（10YFP）を実施し、先進国主導の下、全ての国々が対策を講じる。</label>
@@ -557,7 +557,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="13.1 全ての国々において、気候関連災害や自然災害に対する強靱性（レジリエンス）及び適応の能力を強化する。">
                     <label for="targetGroup${impact}-1">13.1 全ての国々において、気候関連災害や自然災害に対する強靱性（レジリエンス）及び適応の能力を強化する。</label>
@@ -584,7 +584,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="14.1 2025年までに、海洋ごみや富栄養化を含む、特に陸上活動による汚染など、あらゆる種類の海洋汚染を防止し、大幅に削減する。">
                     <label for="targetGroup${impact}-1">14.1 2025年までに、海洋ごみや富栄養化を含む、特に陸上活動による汚染など、あらゆる種類の海洋汚染を防止し、大幅に削減する。</label>
@@ -631,7 +631,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="15.1 2020年までに、国際協定の下での義務に則って、森林、湿地、山地及び乾燥地をはじめとする陸域生態系と内陸淡水生態系及びそれらのサービスの保全、回復及び持続可能な利用を確保する。">
                     <label for="targetGroup${impact}-1">15.1 2020年までに、国際協定の下での義務に則って、森林、湿地、山地及び乾燥地をはじめとする陸域生態系と内陸淡水生態系及びそれらのサービスの保全、回復及び持続可能な利用を確保する。</label>
@@ -686,7 +686,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="16.1 あらゆる場所において、全ての形態の暴力及び暴力に関連する死亡率を大幅に減少させる。">
                     <label for="targetGroup${impact}-1">16.1 あらゆる場所において、全ての形態の暴力及び暴力に関連する死亡率を大幅に減少させる。</label>
@@ -741,7 +741,7 @@ function filterTarget(impact) {
         target = `
             <br>
             <fieldset>
-                <legend>เลือกเป้าหมายสำหรับ ${document.getElementById(`sdg${impact}`).value}. Choose targets for ${document.getElementById(`sdg${impact}`).value}.</legend>
+                <legend>ターゲットを選択します。 ${document.getElementById(`sdg${impact}`).value}.</legend>
                 <div>
                     <input type="checkbox" id="targetGroup${impact}-1" name="targetGroup${impact}" value="17.1 課税及び徴税能力の向上のため、開発途上国への国際的な支援なども通じて、国内資源の動員を強化する。">
                     <label for="targetGroup${impact}-1">17.1 課税及び徴税能力の向上のため、開発途上国への国際的な支援なども通じて、国内資源の動員を強化する。</label>
