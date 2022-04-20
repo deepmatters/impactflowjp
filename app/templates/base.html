@@ -54,9 +54,11 @@
                     </div>
                     <div class="header-nav-block">
                         {% if not current_user.is_authenticated %}
-                            <span class="nav-item"><a class="no-decoration" href="/about">私たちに関しては</a></span>
+                            <span class="nav-item"><a class="no-decoration" href="/about">私たちについて
+                            </a></span>
                         {% else%}
-                            <span class="nav-item"><a class="no-decoration" href="/about">私たちに関しては</a></span>
+                            <span class="nav-item"><a class="no-decoration" href="/about">私たちについて
+                            </a></span>
                             <span class="nav-item"><a class="no-decoration" href="/">マイ　プロジェクト</a></span>
                         {% endif %}
                     </div>

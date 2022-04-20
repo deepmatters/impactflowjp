@@ -6,8 +6,8 @@ from flask_pagedown.fields import PageDownField
 class SignupForm(FlaskForm):
     name = StringField('名前', validators=[DataRequired()])
     email = EmailField('メールアドレス', validators=[DataRequired()])
-    password = PasswordField('パスワードを作成する', validators=[DataRequired()])
-    password_check = PasswordField('パスワード確認', validators=[DataRequired()])
+    password = PasswordField('パスワード', validators=[DataRequired()])
+    password_check = PasswordField('パスワード（確認）', validators=[DataRequired()])
     submit = SubmitField('アカウントを作成する')
 
 class LoginForm(FlaskForm):
