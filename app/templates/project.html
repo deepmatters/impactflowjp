@@ -56,7 +56,7 @@
             <div class="project-head-detail-wrapper">
                 <div class="project-head-detail-left">
                     <p>
-                        <span class="gray-small">期間</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project['json']['duration'] }} 月<br>
+                        <span class="gray-small">期間</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project['json']['duration'] }} ヶ月<br>
                         <span class="gray-small">予算</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ "{:,.2f}".format(project['json']['budget']) }} 日本円
                     </p>
                 </div>
@@ -134,7 +134,7 @@
     </div>
     <br>
  
-    <h2 class="form-section-title">インパクト・モデル</h2>
+    <h2 class="form-section-title">インパクトモデル</h2>
     <p class="no-print">インパクトモデルは、関係する様々なステークホルダーに関して、どのようにインパクトが生まれるかを示すフレームワークを提供するのに役立ちます。これは、活動、アウトプット、アウトカム、インパクトがどのように論理的に結びついているかを概説し、データ収集と分析のための基礎を提供するものです。</p>
     <p class="no-print">ステークホルダー志向のアプローチにより、ステークホルダーのニーズ、実行すべき活動、期待される成果が一致しているかどうかを再確認することが容易になります。</p>
     {% if editable %}
@@ -296,7 +296,7 @@
                                             </div>
                                             <div class="activity-inner-content">
                                                 <h2>{{ output[1]['json']['output'] }}</h2>
-                                                <p class="impact-type">から {{ activity[1]['json']['activity'] }}</p>
+                                                <p class="impact-type">{{ activity[1]['json']['activity'] }}</p>
                                                 <p><em><u>{{ output[1]['json']['indicator'] }}</u></em></p>
                                                 <span class="gray-small">ベースライン量</span><br>
                                                 {{ output[1]['json']['indicatorBaseline'] }} {{ output[1]['json']['indicatorUnit'] }}<br>
@@ -369,7 +369,7 @@
                                                     </div>
                                                     <div class="activity-inner-content">
                                                         <h2>{{ outcome[1]['json']['outcome'] }}</h2>
-                                                        <p class="impact-type">から {{ output[1]['json']['output'] }}</p>
+                                                        <p class="impact-type">{{ output[1]['json']['output'] }}</p>
                                                         <p><em><u>{{ outcome[1]['json']['indicator'] }}</u></em></p>
                                                         <span class="gray-small">ベースライン量</span><br>
                                                         {{ outcome[1]['json']['indicatorBaseline'] }} {{ outcome[1]['json']['indicatorUnit'] }}<br>
@@ -377,7 +377,7 @@
                                                         <span class="gray-small">目標量</span><br>
                                                         {{ outcome[1]['json']['indicatorTarget'] }} {{ outcome[1]['json']['indicatorUnit'] }}<br>
                                                         <div class="spacer-big"></div>
-                                                        <span class="gray-small">インパクト目標に適合：</span><br>
+                                                        <span class="gray-small">インパクト目標：</span><br>
                                                         {% for target in outcome[1]['json']['impactCheck'] %}
                                                             {{ target }}<br>
                                                         {% endfor %}

@@ -21,7 +21,7 @@ const importance3 = document.getElementById('importance3')
 const description = document.getElementById('description')
 
 // Pre-fill degree and importance radio button groups
-if (data.degree === '直接受益者') {
+if (data.degree === '直接的受益者') {
     degree1.checked = true
 } else if (data.degree === '間接的受益者') {
     degree2.checked = true
