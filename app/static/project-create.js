@@ -842,7 +842,7 @@ function impactAdd() {
     childNodeObjectiveLabel.setAttribute('class', `black-small`)
 
     childNodeObjective.setAttribute('id', `objective${impactNum+1}`)
-    childNodeObjective.setAttribute('placeholder', `目標番号を指定します #${impactNum+1} この目標に対応するSDGsの目標を選択します。`)
+    childNodeObjective.setAttribute('placeholder', ``)
 
     childNodeSdgLabel.setAttribute('id', `sdg${impactNum+1}Label`)
     childNodeSdgLabel.setAttribute('class', `black-small`)
@@ -858,17 +858,17 @@ function impactAdd() {
     childNodeHr.setAttribute('id', `impact${impactNum+1}Hr`)
 
     impactWrapper.append(childNodeObjectiveLabel)
-    childNodeObjectiveLabel.innerHTML = `目標番号を指定します #${impactNum+1}`
+    childNodeObjectiveLabel.innerHTML = `目的${impactNum+1}（記述式）`
     
     impactWrapper.append(childNodeObjective)
 
     impactWrapper.append(childNodeSdgLabel)
-    childNodeSdgLabel.innerHTML = `SDG目標を選択する`
+    childNodeSdgLabel.innerHTML = `該当するSDGsの目標を選択して下さい`
 
     impactWrapper.append(childNodeSdg)
 
     document.getElementById(`sdg${impactNum+1}`).innerHTML = `
-        <option value="" disabled selected>--- SDG目標を選択する ---</option>
+        <option value="" disabled selected>--- 該当するSDGsの目標を選択して下さい ---</option>
         <option value="目標1 貧困をなくそう">目標1 貧困をなくそう</option>
         <option value="目標2 飢餓をゼロに">目標2 飢餓をゼロに</option>
         <option value="目標3 全ての人に健康と福祉を">目標3 全ての人に健康と福祉を</option>
@@ -940,7 +940,7 @@ function teamAdd() {
     childNodeHr.setAttribute('id', `team${teamNum+1}Hr`)
 
     teamWrapper.append(childNodeNameLabel)
-    childNodeNameLabel.innerHTML = `名前 #${teamNum+1}`
+    childNodeNameLabel.innerHTML = `メンバー${teamNum+1}の名前`
     teamWrapper.append(childNodeName)
     teamWrapper.append(childNodePositionLabel)
     childNodePositionLabel.innerHTML = '職位'

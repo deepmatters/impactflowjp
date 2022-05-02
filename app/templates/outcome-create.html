@@ -27,7 +27,7 @@
                 </div>
             </div>
             <hr>
-            <p class="black-small">提案</p>
+            <p class="black-small">ヒント</p>
             <p class="gray-small">記載されたアウトプットの結果として期待される中長期的な成果を記述してください。</p>
         </div>
 
@@ -41,8 +41,8 @@
                     <br>
                     
                     <div id="searchResultNumWrapper" style="display:none">
-                        <button type="button" class="search-clear-button" onclick="searchClear()">明確な結果</button>
-                        <p>結果 <span id="searchResultNum">0</span> エントリー</p>
+                        <button type="button" class="search-clear-button" onclick="searchClear()">検索結果をクリアにする</button>
+                        <p>検索結果：<span id="searchResultNum">0</span></p>
                     </div>
                     <div id="searchResult" class="search-result"></div>
                     <div class="spacer-big"></div>
@@ -50,12 +50,12 @@
                     <p class="blue-em">--- または、独自の指標を使用する ---</p>
                     <input id="indicatorCategory" type="text" placeholder="カテゴリー" style="display: none;">
                     <textarea id="indicator" type="text" placeholder="指標"></textarea><br>
-                    <p class="black-small">ベースライン量</p>
-                    <input id="indicatorBaseline" type="number" placeholder="ベースライン量">
-                    <p class="black-small">目標量</p>
-                    <input id="indicatorTarget" type="number" placeholder="目標量">
-                    <p class="black-small">ユニット</p>
-                    <input id="indicatorUnit" type="text" placeholder="ユニット">
+                    <p class="black-small">ベースライン値（数・量）</p>
+                    <input id="indicatorBaseline" type="number" placeholder="ベースライン値（数・量）">
+                    <p class="black-small">目標値（数・量）</p>
+                    <input id="indicatorTarget" type="number" placeholder="目標値（数・量）">
+                    <p class="black-small">単位</p>
+                    <input id="indicatorUnit" type="text" placeholder="単位">
                     <br>                
                 </div>
                 <div class="form-part-right">
@@ -68,8 +68,8 @@
                 </div>
             </div>
             <hr>
-            <p class="black-small">提案</p>
-            <p class="gray-small">以下に示すアウトプットを測定するのに役立つ指標を特定するか、独自の指標を作成してください。選択した指標の適切性を評価するために、ステークホルダーと再確認することをお勧めします。また、データ収集や管理コストの観点から、指標の実用性を検討する必要があります。</p>
+            <p class="black-small">ヒント</p>
+            <p class="gray-small">アウトプットを測定するのに役立つ指標を特定するか、独自の指標を作成してください。選択した指標の適切性を評価するために、ステークホルダーと再確認することをお勧めします。また、データ収集や管理コストの観点から、指標の実用性を検討する必要があります。</p>
         </div>
         
         <div class="form-section-wrapper">
@@ -88,7 +88,7 @@
         </div>
         
         <div class="button-wrapper">
-            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">提出</button>
+            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">完了</button>
         </div>
         <br>
     </div>

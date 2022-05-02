@@ -35,14 +35,14 @@
             {% endif %}
             <span class="url">https://impactflow.org/project/{{ project.id }}</span>
             {% if project.published == True %}
-                <span class="shared no-print">共有</span>
+                <span class="shared no-print">公開中</span>
                 {% if editable %}
-                    <span class="share-toggle-off no-print"><a href="/project/{{ project.id }}/publish/off">共有解除</a></span>
+                    <span class="share-toggle-off no-print"><a href="/project/{{ project.id }}/publish/off">非公開にする</a></span>
                 {% endif %}
             {% else %}
                 <span class="private no-print">プライベート</span>
                 {% if editable %}
-                    <span class="share-toggle-on no-print"><a href="/project/{{ project.id }}/publish/on">共有</a></span>
+                    <span class="share-toggle-on no-print"><a href="/project/{{ project.id }}/publish/on">公開中</a></span>
                 {% endif %}
             {% endif %}
             <!-- {% if project.mod_dt %}
@@ -57,7 +57,7 @@
                 <div class="project-head-detail-left">
                     <p>
                         <span class="gray-small">期間</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project['json']['duration'] }} ヶ月<br>
-                        <span class="gray-small">予算</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ "{:,.2f}".format(project['json']['budget']) }} 日本円
+                        <span class="gray-small">予算</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ "{:,.2f}".format(project['json']['budget']) }} 円
                     </p>
                 </div>
                 <div class="project-head-detail-right">

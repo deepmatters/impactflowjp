@@ -59,14 +59,14 @@
                         {% else%}
                             <span class="nav-item"><a class="no-decoration" href="/about">私たちについて
                             </a></span>
-                            <span class="nav-item"><a class="no-decoration" href="/">マイ　プロジェクト</a></span>
+                            <span class="nav-item"><a class="no-decoration" href="/">マイプロジェクト</a></span>
                         {% endif %}
                     </div>
                     <div class="header-nav-login">
                         {% if not current_user.is_authenticated %}
                             <a class="no-decoration" href="/login"><button class="button-main">ログイン</button></a>
                         {% else%}
-                            <a class="no-decoration" href="/profile"><button class="button-main">マイ　プロファイル</button></a>
+                            <a class="no-decoration" href="/profile"><button class="button-main">マイプロフィール</button></a>
                         {% endif %}
                     </div>
                 </div>

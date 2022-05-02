@@ -32,16 +32,16 @@ class PasswordResetForm(FlaskForm):
     submit = SubmitField('パスワード変更')
 
 class ProjectForm(FlaskForm):
-    submit = SubmitField('提出')
+    submit = SubmitField('完了')
 
 class StakeholderForm(FlaskForm):
-    submit = SubmitField('提出')
+    submit = SubmitField('完了')
 
 class ActivityForm(FlaskForm):
-    submit = SubmitField('提出')
+    submit = SubmitField('完了')
 
 class OutputForm(FlaskForm):
-    submit = SubmitField('提出')
+    submit = SubmitField('完了')
 
 class OutcomeForm(FlaskForm):
-    submit = SubmitField('提出')
+    submit = SubmitField('完了')

@@ -6,7 +6,7 @@
     <div class="spacer-big"></div>
     <div id="formApp">
         <div id="csrf">{{ form.csrf_token }}</div>
-        <h1>プロジェクト作成</h1>
+        <h1>プロジェクトの作成</h1>
         
         <div class="form-section-wrapper">
             <h2 class="form-section-title">プロジェクト/組織名</h2>
@@ -22,19 +22,19 @@
                 </div>
             </div>
             <hr>
-            <p class="black-small">提案</p>
-            <p class="gray-small">組織で複数のプロジェクトがある場合、混乱を避けるために、それぞれ別のプロジェクトプロファイルを作成することをお勧めします。</p>
+            <p class="black-small">ヒント</p>
+            <p class="gray-small">組織で複数のプロジェクトがある場合、混乱を避けるために、それぞれ別のプロジェクトのプロフィールを作成することをお勧めします。</p>
         </div>
         
         <div class="form-section-wrapper">
             <h2 class="form-section-title">インパクト目標</h2>
             <div class="form-part-wrapper">
                 <div class="form-part-left">
-                    <p class="black-small">目的1を指定し</p>
-                    <textarea id="objective1" placeholder="目標番号を指定します #1 この目標に対応するSDGsの目標を選択します。"></textarea>
-                    <p class="black-small">SDGsの目標を選択する。</p>
+                    <p class="black-small">目的１（記述式）</p>
+                    <textarea id="objective1" placeholder=""></textarea>
+                    <p class="black-small">該当するSDGsの目標を選択して下さい</p>
                     <select name="sdg1" id="sdg1" onchange="filterTarget(1)">
-                        <option value="" disabled selected>--- SDGsの目標を選択する。 ---</option>
+                        <option value="" disabled selected>--- 該当するSDGsの目標を選択して下さい ---</option>
                         <option value="目標1 貧困をなくそう">目標1 貧困をなくそう</option>
                         <option value="目標2 飢餓をゼロに">目標2 飢餓をゼロに</option>
                         <option value="目標3 全ての人に健康と福祉を">目標3 全ての人に健康と福祉を</option>
@@ -58,8 +58,8 @@
                     <hr>
                     <div id="impactWrapper"></div>
                     <br>
-                    <button class="button" type="button" onclick="impactAdd()">+ 客観性を追加</button>&nbsp;
-                    <button class="button" type="button" onclick="impactMinus()">- 最後の目的を削除する</button>
+                    <button class="button" type="button" onclick="impactAdd()">+ 目的を追加</button>&nbsp;
+                    <button class="button" type="button" onclick="impactMinus()">- 上記の一番最後の目的を削除</button>
                     <div class="spacer-big"></div>                
                 </div>
                 <div class="form-part-right">
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <hr>
-            <p class="black-small">提案</p>
+            <p class="black-small">ヒント</p>
             <p class="gray-small">プロジェクト/組織のインパクトの目標について説明してください。プロジェクト/組織が達成しようとする究極のインパクトは何ですか？</p>
         </div>
         
@@ -92,8 +92,8 @@
                 </div>
             </div>
             <hr>
-            <p class="black-small">提案</p>
-            <p class="gray-small">業務範囲の詳細を記載します。プロジェクト／組織が解決しようとしている問題、実行プロセス、関与するパートナー、リソース、活動などの概要を説明します。</p>
+            <p class="black-small">ヒント</p>
+            <p class="gray-small">プロジェクト／組織が解決しようとしている問題、実行プロセス、関与するパートナー、リソース、活動などの概要を説明します。</p>
         </div>
         
         <div class="form-section-wrapper">
@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-part-right">
                     <p class="black-small">例</p>
-                    <p>12ヶ月（注：継続的な活動ですが、期間はインパクト報告期間に準じます。）</p>
+                    <p>12ヶ月（注：複数年度に渡る継続的な活動の場合、インパクトの報告期間に準じた月数を記載してください。）</p>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="form-part-right">
                     <p class="black-small">例</p>
-                    <p>該当なし（具体的な予算があるインパクト・プロジェクトに適用される）</p>
+                    <p>5000000（もし予算が無い場合は、0と記載してください）。</p>
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="form-section-wrapper">
             <h2 class="form-section-title">チーム</h2>
             
-            <p class="black-small">名前 #1</p>
+            <p class="black-small">メンバー１の名前</p>
             <input id="team1Name" type="text" placeholder="名前">
             <p class="black-small">職位</p>
             <input id="team1Position" type="text" placeholder="職位">
@@ -138,21 +138,21 @@
             <div id="teamWrapper"></div>
             
             <br>
-            <button class="button" type="button" onclick="teamAdd()">+ 人を追加する</button>&nbsp;
-            <button class="button" type="button" onclick="teamMinus()">- 最後の人を削除します</button>
+            <button class="button" type="button" onclick="teamAdd()">+ メンバーの追加</button>&nbsp;
+            <button class="button" type="button" onclick="teamMinus()">- 上記の一番最後のメンバーを削除</button>
             <div class="spacer-big"></div>
             <br>
         </div>
         
         <div class="form-section-wrapper">
-            <h2 class="form-section-title">このプロジェクトとそのインパクトモデルを一般に公開したいですか？</h2>
+            <h2 class="form-section-title">このプロジェクトとインパクトモデルを一般に公開する場合は、下記の「公開」にチェックを入れてください。</h2>
             <input type="checkbox" id="published" name="publish-checkbox" value="published" checked>
-            <label for="publish-checkbox"> 共有</label>
+            <label for="publish-checkbox"> 公開</label>
             <br>
         </div>
         
         <div class="button-wrapper">
-            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">提出</button>
+            <button id="formSubmit" class="button" type="button" onclick="fetchSubmit()">完了</button>
         </div>
         <br>
     </div>

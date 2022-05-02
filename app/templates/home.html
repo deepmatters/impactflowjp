@@ -74,17 +74,17 @@
     {% if current_user.is_authenticated %}
         <div class="main-bg-wrapper">
             <div class="align-center">
-                <h1>マイ　インパクト・モデル</h1>
+                <h1>マイインパクトモデル</h1>
             </div>
             
             {% if not projects %}
                 <div class="align-center">
-                    <a href="/project-create"><button class="button">作成インパクトモデル</button></a>
+                    <a href="/project-create"><button class="button">インパクトモデルを作成する</button></a>
                 </div>
                 <div class="spacer-big"></div>
             {% else %}
                 <div class="align-center">
-                    <a href="/project-create"><button class="button">作成インパクトモデル</button></a>
+                    <a href="/project-create"><button class="button">インパクトモデルを作成する</button></a>
                 </div>
                 <div class="spacer-big"></div>
             {% endif %}
@@ -108,7 +108,7 @@
                                     <h2>{{ project.json['title'] }}</h2>
                                     <p>{{ project.json['objectives']|truncate(100) }}</p>
                                     {% if project.json['published'] %}
-                                        <span class="shared">共有</span>
+                                        <span class="shared">公開中</span>
                                     {% else %}
                                         <span class="private">プライベート</span>
                                     {% endif %}

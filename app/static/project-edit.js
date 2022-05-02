@@ -840,7 +840,7 @@ if (data.impact[0].sdg === "") {  // If no impact, create a blank impact group
     childNodeObjectiveLabel.setAttribute('class', `black-small`)
 
     childNodeObjective.setAttribute('id', `objective1`)
-    childNodeObjective.setAttribute('placeholder', `目標番号を指定します #1 この目標に対応するSDGsの目標を選択します。`)
+    childNodeObjective.setAttribute('placeholder', ``)
     
     childNodeSdgLabel.setAttribute('id', `sdg1Label`)
     childNodeSdgLabel.setAttribute('class', `black-small`)
@@ -856,17 +856,17 @@ if (data.impact[0].sdg === "") {  // If no impact, create a blank impact group
     childNodeHr.setAttribute('id', `impact1Hr`)
 
     impactWrapper.append(childNodeObjectiveLabel)
-    childNodeObjectiveLabel.innerHTML = `目標番号を指定します #1`
+    childNodeObjectiveLabel.innerHTML = `目的1（記述式）`
 
     impactWrapper.append(childNodeObjective)
 
     impactWrapper.append(childNodeSdgLabel)
-    childNodeSdgLabel.innerHTML = `SDG目標を選択する`
+    childNodeSdgLabel.innerHTML = `該当するSDGsの目標を選択して下さい`
 
     impactWrapper.append(childNodeSdg)
 
     document.getElementById(`sdg1`).innerHTML = `
-        <option value="" disabled selected>--- SDG目標を選択する ---</option>
+        <option value="" disabled selected>--- 該当するSDGsの目標を選択して下さい ---</option>
         <option value="目標1 貧困をなくそう">目標1 貧困をなくそう</option>
         <option value="目標2 飢餓をゼロに">目標2 飢餓をゼロに</option>
         <option value="目標3 全ての人に健康と福祉を">目標3 全ての人に健康と福祉を</option>
@@ -903,7 +903,7 @@ if (data.impact[0].sdg === "") {  // If no impact, create a blank impact group
         childNodeObjectiveLabel.setAttribute('class', `black-small`)
 
         childNodeObjective.setAttribute('id', `objective${i}`)
-        childNodeObjective.setAttribute('placeholder', `目標番号を指定します #${i} この目標に対応するSDGsの目標を選択します。`)
+        childNodeObjective.setAttribute('placeholder', ``)
         
         childNodeSdgLabel.setAttribute('id', `sdg${i}Label`)
         childNodeSdgLabel.setAttribute('class', `black-small`)
@@ -919,17 +919,17 @@ if (data.impact[0].sdg === "") {  // If no impact, create a blank impact group
         childNodeHr.setAttribute('id', `impact${i}Hr`)
 
         impactWrapper.append(childNodeObjectiveLabel)
-        childNodeObjectiveLabel.innerHTML = `目標番号を指定します #${i}`
+        childNodeObjectiveLabel.innerHTML = `目的${i}（記述式）`
 
         impactWrapper.append(childNodeObjective)
 
         impactWrapper.append(childNodeSdgLabel)
-        childNodeSdgLabel.innerHTML = `SDG目標を選択する`
+        childNodeSdgLabel.innerHTML = `該当するSDGsの目標を選択して下さい`
 
         impactWrapper.append(childNodeSdg)
 
         document.getElementById(`sdg${i}`).innerHTML = `
-            <option value="" disabled selected>--- SDG目標を選択する ---</option>
+            <option value="" disabled selected>--- 該当するSDGsの目標を選択して下さい ---</option>
             <option value="目標1 貧困をなくそう">目標1 貧困をなくそう</option>
             <option value="目標2 飢餓をゼロに">目標2 飢餓をゼロに</option>
             <option value="目標3 全ての人に健康と福祉を">目標3 全ての人に健康と福祉を</option>
@@ -997,7 +997,7 @@ if (data.team[0].name === "") {  // If no team, create a blank team group
     childNodeHr.setAttribute('id', `team${teamNum+1}Hr`)
 
     teamWrapper.append(childNodeNameLabel)
-    childNodeNameLabel.innerHTML = `名前 #${teamNum+1}`
+    childNodeNameLabel.innerHTML = `メンバー${teamNum+1}の名前`
 
     teamWrapper.append(childNodeName)
     teamWrapper.append(childNodePositionLabel)
@@ -1036,7 +1036,7 @@ if (data.team[0].name === "") {  // If no team, create a blank team group
         childNodeHr.setAttribute('id', `team${i}Hr`)
 
         teamWrapper.append(childNodeNameLabel)
-        childNodeNameLabel.innerHTML = `名前 #${i}`
+        childNodeNameLabel.innerHTML = `メンバー${i}の名前`
         teamWrapper.append(childNodeName)
         teamWrapper.append(childNodePositionLabel)
         childNodePositionLabel.innerHTML = '職位'
@@ -1167,7 +1167,7 @@ function teamAdd() {
     childNodeHr.setAttribute('id', `team${teamNum+1}Hr`)
 
     teamWrapper.append(childNodeNameLabel)
-    childNodeNameLabel.innerHTML = `名前 #${teamNum+1}`
+    childNodeNameLabel.innerHTML = `メンバー${teamNum+1}の名前`
 
     teamWrapper.append(childNodeName)
     teamWrapper.append(childNodePositionLabel)
