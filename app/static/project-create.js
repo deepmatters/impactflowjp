@@ -858,7 +858,7 @@ function impactAdd() {
     childNodeHr.setAttribute('id', `impact${impactNum+1}Hr`)
 
     impactWrapper.append(childNodeObjectiveLabel)
-    childNodeObjectiveLabel.innerHTML = `目的${impactNum+1}（記述式）`
+    childNodeObjectiveLabel.innerHTML = `目標${impactNum+1}（記述式）`
     
     impactWrapper.append(childNodeObjective)
 

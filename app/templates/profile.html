@@ -36,14 +36,14 @@
         <div class="main-flex-left">
             <h2 class="form-section-title">マイプロジェクト</h2>
             <a class="no-decoration" href="/project-create"><button class="button">プロジェクトの作成</button></a>&nbsp;&nbsp;
-            <a class="no-decoration" href="/"><button class="button">マイプロジェクト</button></a><br><br>
+            <a class="no-decoration" href="/"><button class="button">プロジェクト一覧</button></a><br><br>
 
             {% for project in projects %}
                 <h2><a href="/project/{{ project.id }}">{{ project.json['title'] }}</a></h2>
                 {% if project.published == True %}
                     <span class="shared no-print">公開中</span><br><div class="spacer-big"></div>
                 {% else %}
-                    <span class="private no-print">プライベート</span><br><div class="spacer-big"></div>
+                    <span class="private no-print">非公開</span><br><div class="spacer-big"></div>
                 {% endif %}
                 <span class="gray-small">作成</span> &nbsp;&nbsp;&nbsp;<span class="black-small">{{ project.create_dt|datetimefilter }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {% if project.mod_dt %}

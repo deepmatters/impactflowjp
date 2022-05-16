@@ -163,7 +163,7 @@ function searchSubmit() {
 
             const searchResultItem = document.getElementById(`searchResult${count}`)
             searchResultItem.innerHTML = `
-                <span class="gray-small">${result.matchNum} マッチング</span>
+                <span class="gray-small">検索結果${result.matchNum}</span>
                 <div class="spacer-big"></div>
                 <div class="black-small">
                     <div class="spacer-big"></div>

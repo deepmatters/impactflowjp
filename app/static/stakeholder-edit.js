@@ -25,7 +25,7 @@ if (data.degree === '直接的受益者') {
     degree1.checked = true
 } else if (data.degree === '間接的受益者') {
     degree2.checked = true
-} else if (data.degree === 'プロジェクトの成功を実現するもの') {
+} else if (data.degree === '支援者（プロジェクトの直接の参加者ではないが、何かしらのサポートの役割を担う人。プロジェクトの成功の鍵となる人。）') {
     degree3.checked = true
 }
 

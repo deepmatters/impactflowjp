@@ -856,7 +856,7 @@ if (data.impact[0].sdg === "") {  // If no impact, create a blank impact group
     childNodeHr.setAttribute('id', `impact1Hr`)
 
     impactWrapper.append(childNodeObjectiveLabel)
-    childNodeObjectiveLabel.innerHTML = `目的1（記述式）`
+    childNodeObjectiveLabel.innerHTML = `目標1（記述式）`
 
     impactWrapper.append(childNodeObjective)
 
@@ -919,7 +919,7 @@ if (data.impact[0].sdg === "") {  // If no impact, create a blank impact group
         childNodeHr.setAttribute('id', `impact${i}Hr`)
 
         impactWrapper.append(childNodeObjectiveLabel)
-        childNodeObjectiveLabel.innerHTML = `目的${i}（記述式）`
+        childNodeObjectiveLabel.innerHTML = `目標${i}（記述式）`
 
         impactWrapper.append(childNodeObjective)
 

@@ -30,7 +30,7 @@
             <h2 class="form-section-title">インパクト目標</h2>
             <div class="form-part-wrapper">
                 <div class="form-part-left">
-                    <p class="black-small">目的１（記述式）</p>
+                    <p class="black-small">目標１（記述式）</p>
                     <textarea id="objective1" placeholder=""></textarea>
                     <p class="black-small">該当するSDGsの目標を選択して下さい</p>
                     <select name="sdg1" id="sdg1" onchange="filterTarget(1)">
@@ -58,8 +58,8 @@
                     <hr>
                     <div id="impactWrapper"></div>
                     <br>
-                    <button class="button" type="button" onclick="impactAdd()">+ 目的を追加</button>&nbsp;
-                    <button class="button" type="button" onclick="impactMinus()">- 上記の一番最後の目的を削除</button>
+                    <button class="button" type="button" onclick="impactAdd()">+ 目標を追加</button>&nbsp;
+                    <button class="button" type="button" onclick="impactMinus()">- 上記の一番最後の目標を削除</button>
                     <div class="spacer-big"></div>                
                 </div>
                 <div class="form-part-right">
@@ -102,11 +102,11 @@
                 <div class="form-part-left">
                     <p class="black-small">月数</p>
                     <p id="durationGuide" class="red-em" style="display: none;">整数で入力してください</p>
-                    <input id="duration" type="number" placeholder="月数">                
+                    <input id="duration" type="number" min="0" placeholder="月数">                
                 </div>
                 <div class="form-part-right">
                     <p class="black-small">例</p>
-                    <p>12ヶ月（注：複数年度に渡る継続的な活動の場合、インパクトの報告期間に準じた月数を記載してください。）</p>
+                    <p>12（注：複数年度に渡る継続的な活動の場合、インパクトの報告期間に準じた月数を記載してください。）</p>
                 </div>
             </div>
         </div>

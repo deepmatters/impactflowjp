@@ -40,9 +40,9 @@
                     <span class="share-toggle-off no-print"><a href="/project/{{ project.id }}/publish/off">非公開にする</a></span>
                 {% endif %}
             {% else %}
-                <span class="private no-print">プライベート</span>
+                <span class="private no-print">非公開</span>
                 {% if editable %}
-                    <span class="share-toggle-on no-print"><a href="/project/{{ project.id }}/publish/on">公開中</a></span>
+                    <span class="share-toggle-on no-print"><a href="/project/{{ project.id }}/publish/on">公開する</a></span>
                 {% endif %}
             {% endif %}
             <!-- {% if project.mod_dt %}
