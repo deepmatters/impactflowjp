@@ -162,9 +162,20 @@ function searchSubmit() {
             searchResult.appendChild(searchResultItemDiv)
 
             const searchResultItem = document.getElementById(`searchResult${count}`)
+            // NOTE: Disable matchNum display because it could be confusing to users
+            // searchResultItem.innerHTML = `
+            //     <span class="gray-small">検索結果${result.matchNum}</span>
+            //     <div class="spacer-big"></div>
+            //     <div class="black-small">
+            //         <div class="spacer-big"></div>
+            //         <span class="blue-em">${result.obj.category}</span><br>
+            //         ${result.obj.subcategory}<br>
+            //         <p><strong>${result.obj.indicator}</strong> (${result.obj.source})</p>
+            //     </div>
+            //     <button class="button" onclick="searchFill(${i})">この指標を使用する</button>
+            //     <div class="spacer-small"></div>
+            // `
             searchResultItem.innerHTML = `
-                <span class="gray-small">検索結果${result.matchNum}</span>
-                <div class="spacer-big"></div>
                 <div class="black-small">
                     <div class="spacer-big"></div>
                     <span class="blue-em">${result.obj.category}</span><br>
